@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>blackbox</title>
+    <title>Home</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
   </head>
   <body>
+    {% extends "html/theme.html" %}
+    {% block content %}
+
+      <h1>Home</h1>
+
+      <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+    {% endblock %}
   </body>
 </html>
