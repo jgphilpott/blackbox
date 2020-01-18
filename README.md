@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" height="200" src="https://github.com/jgphilpott/blackbox/blob/master/app/img/icon.jpg">
+  <img width="200" height="200" src="https://github.com/jgphilpott/blackbox/blob/master/app/img/icon.png">
 </p>
 
 # blackbox
