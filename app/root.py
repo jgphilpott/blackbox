@@ -8,7 +8,7 @@ message = "Welcome to the futrue!"
 
 @app.route("/")
 def home():
-    
+
     sense.show_message(message)
     return render_template("html/home.html", message=message)
 
