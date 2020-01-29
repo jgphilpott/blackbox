@@ -1,29 +1,16 @@
-<<<<<<< HEAD
 <html>
   <head>
-      
+
     <meta charset="utf-8" lang="en" dir="ltr">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
-    
+
     <script> const data = {{ message | tojson | safe }} </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
-    
-=======
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <title>blackbox</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
->>>>>>> 31eb492b37bac7982112b33a656075c66dbf964d
+
   </head>
   <body>
     {% block content %}
