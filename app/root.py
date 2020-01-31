@@ -11,6 +11,7 @@ app.jinja_env.auto_reload = True
 socketio = SocketIO(app)
 
 sense_hat = SenseHat()
+sense_hat.clear()
 
 @app.route("/")
 def home():
