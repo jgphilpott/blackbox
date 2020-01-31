@@ -1,16 +1,13 @@
 def get_temperature(sense_hat, type="raw"):
 
-	raw = sense_hat.get_temperature()
-	extra = sense_hat.get_temperature_from_pressure()
-
 	if type == "raw":
 
-		return raw
+		return sense_hat.get_temperature()
 
 	elif type == "extra":
 
-		return extra
+		return sense_hat.get_temperature_from_pressure()
 
 	elif type == "average":
 
-		return (raw + extra) / 2
+		return (sense_hat.get_temperature() + sense_hat.get_temperature_from_pressure()) / 2
