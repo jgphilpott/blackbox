@@ -1,20 +1,28 @@
-#metric-box {
+#metrics-box,
+#comms-box {
+
+  position: fixed;
+  padding: 10px;
+
+}
+
+#metrics-box {
 
   top: 0px;
   left: 0px;
-  padding: 10px;
-  position: fixed;
 
 }
 
-h1 {
+#comms-box {
 
-  padding: 5px;
+  bottom: 0px;
+  left: 0px;
 
 }
 
+h1,
 p {
 
-  padding: 3px;
+  padding: 5px;
 
 }

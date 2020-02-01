@@ -19,6 +19,7 @@ $(document).ready(function() {
 
   light = new THREE.PointLight(0xffffff, 42)
   light.position.set(100, 200, 300)
+  scene.add(light)
 
   camera = new THREE.PerspectiveCamera(fov, width/height, near, far)
   camera.position.set(300, 150, 300)
@@ -31,32 +32,43 @@ $(document).ready(function() {
   x_vector.vertices.push(new THREE.Vector3(500, 0, 0))
   x_vector.vertices.push(new THREE.Vector3(-500, 0, 0))
   x_axis = new THREE.Line(x_vector, line_material)
+  scene.add(x_axis)
 
   y_vector = new THREE.Geometry()
   y_vector.vertices.push(new THREE.Vector3(0, 500, 0))
   y_vector.vertices.push(new THREE.Vector3(0, -500, 0))
   y_axis = new THREE.Line(y_vector, line_material)
+  scene.add(y_axis)
 
   z_vector = new THREE.Geometry()
   z_vector.vertices.push(new THREE.Vector3(0, 0, 500))
   z_vector.vertices.push(new THREE.Vector3(0, 0, -500))
   z_axis = new THREE.Line(z_vector, line_material)
+  scene.add(z_axis)
 
   fuselage_geometry = new THREE.CylinderGeometry(32, 32, 300)
   fuselage_material = new THREE.MeshStandardMaterial({color: 0x000000})
   fuselage = new THREE.Mesh(fuselage_geometry, fuselage_material)
   fuselage.rotation.z = 90 * Math.PI / 180
+  scene.add(fuselage)
 
   wings_geometry = new THREE.BoxGeometry(50, 10, 300)
   wings_material = new THREE.MeshStandardMaterial({color: 0x000000})
   wings = new THREE.Mesh(wings_geometry, wings_material)
-
-  scene.add(light)
-  scene.add(x_axis)
-  scene.add(y_axis)
-  scene.add(z_axis)
-  scene.add(fuselage)
   scene.add(wings)
+
+  $("#comms-text").keypress(function(event) {
+
+    if (event.keyCode == 13 && event.shiftKey) {
+
+      event.preventDefault()
+      message = $("#comms-text").val()
+      socket.emit("new_comms", message)
+      $("#comms-text").val("")
+
+    }
+
+  })
 
   function request_readings() {
 

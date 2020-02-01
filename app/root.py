@@ -27,7 +27,12 @@ def request_reading():
 
     except:
 
-        pass
+        print("Reading Error!")
+
+@socketio.on("new_comms")
+def new_comms(message):
+
+    sense_hat.show_message(message)
 
 if __name__ == "__main__":
 

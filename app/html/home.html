@@ -11,12 +11,18 @@
     {% extends "html/theme.html" %}
     {% block content %}
 
-      <div id="metric-box">
+      <div id="metrics-box">
         <h1>Metrics</h1>
         <p><strong>Compass:</strong> <span id="compass"></span></p>
         <p><strong>Humidity:</strong> <span id="humidity"></span></p>
         <p><strong>Pressure:</strong> <span id="pressure"></span></p>
         <p><strong>Temperature:</strong> <span id="temperature"></span></p>
+      </div>
+
+      <div id="comms-box">
+        <h1>Comms</h1>
+        <p>Send a message to ground control:</p>
+        <textarea id="comms-text" placeholder="Type a message here and then hit 'shift + enter'" rows="5" cols="50"></textarea>
       </div>
 
       <script src="{{ url_for('static', filename='js/home.js') }}"></script>
