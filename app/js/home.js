@@ -18,33 +18,33 @@ $(document).ready(function() {
   canvas = document.body.appendChild(renderer.domElement)
 
   light = new THREE.PointLight(0xffffff, 42)
-  light.position.set(100, 100, 100)
+  light.position.set(100, 200, 300)
 
   camera = new THREE.PerspectiveCamera(fov, width/height, near, far)
-  camera.position.set(42, 42, 42)
+  camera.position.set(300, 150, 300)
 
   controls = new THREE.OrbitControls(camera, canvas)
 
   line_material = new THREE.LineBasicMaterial({color: 0x000000, linewidth: 1})
 
   x_vector = new THREE.Geometry()
-  y_vector = new THREE.Geometry()
-  z_vector = new THREE.Geometry()
-
-  x_vector.vertices.push(new THREE.Vector3(100, 0, 0))
-  x_vector.vertices.push(new THREE.Vector3(-100, 0, 0))
-  y_vector.vertices.push(new THREE.Vector3(0, 100, 0))
-  y_vector.vertices.push(new THREE.Vector3(0, -100, 0))
-  z_vector.vertices.push(new THREE.Vector3(0, 0, 100))
-  z_vector.vertices.push(new THREE.Vector3(0, 0, -100))
-
+  x_vector.vertices.push(new THREE.Vector3(500, 0, 0))
+  x_vector.vertices.push(new THREE.Vector3(-500, 0, 0))
   x_axis = new THREE.Line(x_vector, line_material)
+
+  y_vector = new THREE.Geometry()
+  y_vector.vertices.push(new THREE.Vector3(0, 500, 0))
+  y_vector.vertices.push(new THREE.Vector3(0, -500, 0))
   y_axis = new THREE.Line(y_vector, line_material)
+
+  z_vector = new THREE.Geometry()
+  z_vector.vertices.push(new THREE.Vector3(0, 0, 500))
+  z_vector.vertices.push(new THREE.Vector3(0, 0, -500))
   z_axis = new THREE.Line(z_vector, line_material)
 
-  geometry = new THREE.BoxGeometry(10, 10, 10)
-  material = new THREE.MeshStandardMaterial({color: 0x000000})
-  cube = new THREE.Mesh(geometry, material)
+  box_geometry = new THREE.BoxGeometry(150, 37.5, 75)
+  box_material = new THREE.MeshStandardMaterial({color: 0x000000})
+  cube = new THREE.Mesh(box_geometry, box_material)
 
   scene.add(light)
   scene.add(x_axis)
@@ -60,13 +60,23 @@ $(document).ready(function() {
 
   socket.on("connect", function() {
 
-    setInterval(request_readings, 1000)
+    setInterval(request_readings, 100)
 
   })
 
+  function scale_value(value, from_range, to_range) {
+
+    return ((value - from_range[0]) / (from_range[1] - from_range[0])) * (to_range[1] - to_range[0]) + to_range[0]
+
+  }
+
   socket.on("new_reading", function(reading) {
 
-    console.log(reading)
+    x_rotation = scale_value(reading.acceleration.x, [-1, 1], [-90, 90])
+    y_rotation = scale_value(reading.acceleration.y, [-1, 1], [-90, 90])
+
+    cube.rotation.z = -(x_rotation * Math.PI / 180)
+    cube.rotation.x = y_rotation * Math.PI / 180
 
   })
 
