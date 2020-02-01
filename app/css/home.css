@@ -1,0 +1,20 @@
+#metric-box {
+
+  top: 0px;
+  left: 0px;
+  padding: 10px;
+  position: fixed;
+
+}
+
+h1 {
+
+  padding: 5px;
+
+}
+
+p {
+
+  padding: 3px;
+
+}

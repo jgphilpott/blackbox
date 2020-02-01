@@ -11,6 +11,14 @@
     {% extends "html/theme.html" %}
     {% block content %}
 
+      <div id="metric-box">
+        <h1>Metrics</h1>
+        <p><strong>Compass:</strong> <span id="compass"></span></p>
+        <p><strong>Humidity:</strong> <span id="humidity"></span></p>
+        <p><strong>Pressure:</strong> <span id="pressure"></span></p>
+        <p><strong>Temperature:</strong> <span id="temperature"></span></p>
+      </div>
+
       <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 
     {% endblock %}

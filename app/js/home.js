@@ -78,6 +78,11 @@ $(document).ready(function() {
     cube.rotation.z = -(x_rotation * Math.PI / 180)
     cube.rotation.x = y_rotation * Math.PI / 180
 
+    $("#compass").text(reading.compass.toFixed(2) + " °N")
+    $("#humidity").text(reading.humidity.toFixed(2) + " %")
+    $("#pressure").text(reading.pressure.toFixed(2) + " millibars")
+    $("#temperature").text(reading.temperature.toFixed(2) + " °C")
+
   })
 
   function animate() {
