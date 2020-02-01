@@ -42,15 +42,21 @@ $(document).ready(function() {
   z_vector.vertices.push(new THREE.Vector3(0, 0, -500))
   z_axis = new THREE.Line(z_vector, line_material)
 
-  box_geometry = new THREE.BoxGeometry(150, 37.5, 75)
-  box_material = new THREE.MeshStandardMaterial({color: 0x000000})
-  cube = new THREE.Mesh(box_geometry, box_material)
+  fuselage_geometry = new THREE.CylinderGeometry(32, 32, 300)
+  fuselage_material = new THREE.MeshStandardMaterial({color: 0x000000})
+  fuselage = new THREE.Mesh(fuselage_geometry, fuselage_material)
+  fuselage.rotation.z = 90 * Math.PI / 180
+
+  wings_geometry = new THREE.BoxGeometry(50, 10, 300)
+  wings_material = new THREE.MeshStandardMaterial({color: 0x000000})
+  wings = new THREE.Mesh(wings_geometry, wings_material)
 
   scene.add(light)
   scene.add(x_axis)
   scene.add(y_axis)
   scene.add(z_axis)
-  scene.add(cube)
+  scene.add(fuselage)
+  scene.add(wings)
 
   function request_readings() {
 
@@ -75,8 +81,11 @@ $(document).ready(function() {
     x_rotation = scale_value(reading.acceleration.x, [-1, 1], [-90, 90])
     y_rotation = scale_value(reading.acceleration.y, [-1, 1], [-90, 90])
 
-    cube.rotation.z = -(x_rotation * Math.PI / 180)
-    cube.rotation.x = y_rotation * Math.PI / 180
+    fuselage.rotation.z = -((x_rotation + 90) * Math.PI / 180)
+    fuselage.rotation.x = y_rotation * Math.PI / 180
+
+    wings.rotation.z = -(x_rotation * Math.PI / 180)
+    wings.rotation.x = y_rotation * Math.PI / 180
 
     $("#compass").text(reading.compass.toFixed(2) + " °N")
     $("#humidity").text(reading.humidity.toFixed(2) + " %")
