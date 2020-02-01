@@ -8,10 +8,10 @@ app = Flask("blackbox", template_folder="app", static_folder="app")
 app.config["SECRET_KEY"] = urandom(42).hex()
 app.jinja_env.auto_reload = True
 
-socketio = SocketIO(app)
-
 sense_hat = SenseHat()
 sense_hat.clear()
+
+socketio = SocketIO(app)
 
 @app.route("/")
 def home():
@@ -21,7 +21,13 @@ def home():
 @socketio.on("request_reading")
 def request_reading():
 
-    socketio.emit("new_reading", get_readings(sense_hat), broadcast=True)
+    try:
+
+        socketio.emit("new_reading", get_readings(sense_hat), broadcast=True)
+
+    except:
+
+        pass
 
 if __name__ == "__main__":
 
