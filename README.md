@@ -6,7 +6,7 @@
 
 blackbox is a project designed to simulate an airplane control system using a [Raspberry Pi](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). The Sense HAT is a Raspberry Pi add-on that was designed for the [Astro Pi Mission](https://astro-pi.org/about/mission/) and comes with six essential sensors for inertial measurement as well as a 8x8 LED matrix and a joystick.
 
-**A video introduction is available [here]()**, but if you don't have the above mentioned hardware you won't be able to try this at home.. sorry :(
+**A video introduction is available [here](https://youtu.be/wSXlRIHWeEo)**, but if you don't have the above mentioned hardware you won't be able to try this at home.. sorry :(
 
 # Quick Start
 
