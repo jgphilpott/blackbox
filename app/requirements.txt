@@ -8,7 +8,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 monotonic==1.5
-numpy==1.21.0
+numpy==1.22.0
 Pillow==9.0.1
 python-engineio==3.11.2
 python-socketio==4.4.0
