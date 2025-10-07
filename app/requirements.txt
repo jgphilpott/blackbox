@@ -11,7 +11,7 @@ monotonic==1.5
 numpy==1.22.0
 Pillow==10.3.0
 python-engineio==3.11.2
-python-socketio==4.4.0
+python-socketio==5.14.0
 sense-hat==2.2.0
 six==1.14.0
 Werkzeug==3.0.6
