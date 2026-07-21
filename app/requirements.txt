@@ -9,7 +9,7 @@ Jinja2==3.1.6
 MarkupSafe==1.1.1
 monotonic==1.5
 numpy==1.22.0
-Pillow==12.2.0
+Pillow==12.3.0
 python-engineio==4.13.2
 python-socketio==5.16.2
 sense-hat==2.2.0
